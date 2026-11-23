@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trade With Yashrao | Analyze • Trade • Grow</title>
+  <!-- Load Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Core mobile dark theme styles & smooth animations */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Top Header reveal transition */
+    #sticky-header {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease;
+    }
+    #sticky-header.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Tactile press & hover feedback */
+    .tap-card {
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), filter 0.18s ease, border-color 0.2s ease;
+      will-change: transform;
+    }
+    .tap-card:active {
+      transform: scale(0.975);
+      filter: brightness(1.06);
+    }
+    @media (hover: hover) {
+      .tap-card:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+      }
+      .tap-card:active {
+        transform: scale(0.98);
+      }
+    }
+
+    /* Hero Obsidian + Subtle Warm Gold Radial Spotlight */
+    .hero-obsidian-gold {
+      background:
+        radial-gradient(circle at 50% 34%, rgba(212, 175, 55, 0.24) 0%, rgba(161, 120, 32, 0.10) 34%, rgba(12, 12, 15, 0.94) 68%, #000000 100%),
+        linear-gradient(180deg, #0b0b0e 0%, #050507 65%, #000000 100%);
+    }
+
+    /* Hero bottom fade into pure black */
+    .hero-fade {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.04) 0%,
+        rgba(0, 0, 0, 0.16) 44%,
+        rgba(0, 0, 0, 0.78) 78%,
+        #000000 100%
+      );
+    }
+
+    /* Gold emblem ring shadow */
+    .emblem-ring {
+      box-shadow:
+        0 0 0 2px rgba(212, 175, 55, 0.65),
+        0 0 42px rgba(212, 175, 55, 0.22),
+        0 18px 42px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Card dark gradient overlay */
+    .card-scrim {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.06) 0%,
+        rgba(0, 0, 0, 0.22) 48%,
+        rgba(0, 0, 0, 0.82) 100%
+      );
+    }
+
+    /* Spotlight Card #1 metallic silver-to-charcoal finish */
+    .metallic-spotlight {
+      background: linear-gradient(180deg, #f4f5f7 0%, #cdd2da 36%, #6f7580 74%, #23252a 100%);
+    }
+
+    /* Instagram multi-stop social gradient */
+    .social-instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    }
+
+    /* Smooth accordion dropdown for Community & Stats */
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease, margin-top 0.24s ease;
+    }
+    .accordion-content.open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 12px;
+    }
+    .accordion-inner {
+      overflow: hidden;
+    }
+
+    /* 5+ Ambient Glow Horizontal Banner Themes (matching link.me screenshots) */
+    .banner-emerald {
+      background:
+        radial-gradient(circle at 18% 50%, rgba(16, 185, 129, 0.88) 0%, rgba(5, 150, 105, 0.28) 44%, transparent 72%),
+        radial-gradient(circle at 88% 50%, rgba(16, 185, 129, 0.65) 0%, rgba(6, 78, 59, 0.42) 55%, transparent 82%),
+        linear-gradient(90deg, #059669 0%, #053e2f 52%, #059669 100%);
+    }
+    .banner-orange {
+      background:
+        radial-gradient(circle at 44% 50%, rgba(234, 88, 12, 0.94) 0%, rgba(194, 65, 12, 0.48) 48%, transparent 76%),
+        linear-gradient(90deg, #b9bdc5 0%, #d4d7dc 16%, #c2410c 46%, #9ca3af 86%, #b5bac2 100%);
+    }
+    .banner-eclipse {
+      background:
+        radial-gradient(circle at 18% 50%, rgba(71, 85, 105, 0.55) 0%, rgba(15, 23, 42, 0.35) 48%, transparent 74%),
+        radial-gradient(circle at 86% 50%, rgba(30, 41, 59, 0.58) 0%, transparent 72%),
+        linear-gradient(90deg, #1e242d 0%, #0b0e14 54%, #111827 100%);
+    }
+    .banner-royal {
+      background:
+        radial-gradient(circle at 22% 50%, rgba(29, 78, 216, 0.82) 0%, rgba(30, 58, 138, 0.35) 48%, transparent 75%),
+        radial-gradient(circle at 86% 50%, rgba(148, 163, 184, 0.52) 0%, rgba(15, 23, 42, 0.35) 56%, transparent 82%),
+        linear-gradient(90deg, #172554 0%, #1e293b 54%, #64748b 100%);
+    }
+    .banner-steel {
+      background:
+        radial-gradient(circle at 52% 50%, rgba(226, 232, 240, 0.72) 0%, rgba(71, 85, 105, 0.45) 54%, transparent 84%),
+        linear-gradient(90deg, #0b1120 0%, #64748b 44%, #cbd5e1 68%, #0f172a 100%);
+    }
+    .banner-gold {
+      background:
+        radial-gradient(circle at 24% 50%, rgba(212, 175, 55, 0.78) 0%, rgba(146, 104, 24, 0.32) 48%, transparent 75%),
+        radial-gradient(circle at 88% 50%, rgba(212, 175, 55, 0.38) 0%, transparent 70%),
+        linear-gradient(90deg, #422006 0%, #18140d 55%, #713f12 100%);
+    }
+
+    /* Bottom-Sheet Editor Transitions */
+    #editor-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    #editor-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #editor-drawer {
+      transform: translateY(100%);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #editor-drawer.open {
+      transform: translateY(0);
+    }
+
+    /* Minimal dark scrollbars */
+    .dark-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .dark-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .dark-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 9999px;
+    }
+
+    /* Toast notification animation */
+    #toast-box {
+      transform: translate(-50%, 24px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease;
+    }
+    #toast-box.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen antialiased selection:bg-amber-500/30">
+
+  <!-- Sticky Top Header (Smoothly fades in when scrolling past the hero) -->
+  <header id="sticky-header" class="fixed top-0 inset-x-0 z-40">
+    <div class="max-w-[430px] mx-auto px-4 h-[58px] bg-[#0a0a0c]/95 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between">
+      <button type="button" id="scroll-top-btn" class="flex items-center gap-2.5 text-left focus:outline-none">
+        <div id="sticky-avatar" class="w-[36px] h-[36px] rounded-full overflow-hidden border border-amber-400/50 bg-zinc-900 flex-shrink-0"></div>
+        <div class="flex items-center gap-1.5 min-w-0">
+          <span id="sticky-name" class="text-[15.5px] font-bold tracking-tight text-white truncate">Trade With Yashrao</span>
+          <span id="sticky-verified" class="inline-flex items-center flex-shrink-0"></span>
+        </div>
+      </button>
+      <button type="button" id="sticky-share-btn" aria-label="Copy profile link" class="w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center text-white/80 transition">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hidden quick file input for 1-tap Hero Bio Photo upload -->
+  <input type="file" id="quick-bio-photo-input" accept="image/*" class="hidden" />
+
+  <!-- Main Mobile-First Link-in-Bio Container -->
+  <main id="bio-app" class="max-w-[430px] w-full mx-auto min-h-screen bg-black pb-24 relative">
+    <!-- Dynamically populated by JavaScript -->
+  </main>
+
+  <!-- Floating Bottom-Right Pill Button ("Edit Links & Bio" with gold accent border) -->
+  <button
+    type="button"
+    id="open-editor-btn"
+    class="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#111114]/95 hover:bg-[#19191f] border border-amber-400/45 backdrop-blur-xl text-white text-[13px] font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.85)] tap-card"
+  >
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 20h9"/>
+      <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+    </svg>
+    <span>Edit Links &amp; Bio</span>
+  </button>
+
+  <!-- Footer Legal/Info Modal (Privacy Policy, Terms, Report — zero alert()) -->
+  <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="w-full max-w-[380px] rounded-2xl bg-[#121215] border border-white/10 p-5 shadow-2xl">
+      <div class="flex items-center justify-between mb-3">
+        <h3 id="info-modal-title" class="text-[16px] font-bold text-white">Info</h3>
+        <button type="button" id="info-modal-close" aria-label="Close modal" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-zinc-300 hover:text-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p id="info-modal-body" class="text-[13.5px] leading-relaxed text-zinc-300"></p>
+    </div>
+  </div>
+
+  <!-- Slide-Up Mobile Editor Drawer -->
+  <div id="editor-backdrop" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end justify-center">
+    <section id="editor-drawer" class="w-full max-w-[430px] h-[88vh] max-h-[840px] bg-[#0e0e11] border-t border-x border-white/15 rounded-t-[26px] flex flex-col overflow-hidden shadow-2xl">
+      <!-- Drawer Grab Bar & Title -->
+      <div class="pt-3 pb-2.5 px-4 border-b border-white/[0.08] flex-shrink-0">
+        <div class="w-10 h-1 rounded-full bg-zinc-700 mx-auto mb-3"></div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-[16px] font-bold text-white tracking-tight">Edit Links &amp; Photos</h2>
+            <p class="text-[11.5px] text-zinc-400">Changes save automatically to your browser</p>
+          </div>
+          <button type="button" id="close-editor-btn" aria-label="Close editor" class="w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/[0.15] flex items-center justify-center text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- 4 Clean Editor Tabs -->
+        <div id="editor-tabs" class="grid grid-cols-4 gap-1 mt-3 p-1 rounded-xl bg-black/70 border border-white/[0.07]">
+          <button type="button" data-tab="bio" class="editor-tab py-2 rounded-lg text-[11.5px] font-semibold transition">Bio &amp; Photo</button>
+          <button type="button" data-tab="socials" class="editor-tab py-2 rounded-lg text-[11.5px] font-semibold transition">Socials</button>
+          <button type="button" data-tab="cards" class="editor-tab py-2 rounded-lg text-[11.5px] font-semibold transition">Cards</button>
+          <button type="button" data-tab="export" class="editor-tab py-2 rounded-lg text-[11.5px] font-semibold transition">Export</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Scrollable Tab Content -->
+      <div id="editor-body" class="flex-1 overflow-y-auto dark-scroll p-4 space-y-4"></div>
+    </section>
+  </div>
+
+  <!-- Toast Notification Pill -->
+  <div id="toast-box" class="fixed bottom-20 left-1/2 z-[60] px-4 py-2.5 rounded-full bg-[#151519] border border-amber-400/35 text-white text-[13px] font-medium shadow-2xl whitespace-nowrap max-w-[90vw] truncate">
+    Saved
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================================
+         1. DEFAULT CONFIGURATION & PERSISTENT LOCALSTORAGE STATE
+      ===================================================================== */
+      const STORAGE_KEY = 'trade_with_yashrao_bio_v2';
+
+      const DEFAULT_STATE = {
+        profile: {
+          name: 'Trade With Yashrao',
+          handle: '@tradewithyashrao',
+          verified: true,
+          bioPhoto: '',            // Stores uploaded Base64 Data URL or custom image URL
+          heroMode: 'emblem',      // 'emblem' (Circular Logo Crest) or 'fullbleed' (Full-Bleed Portrait)
+          pillLabel: 'Community & Stats',
+          stats: [
+            { label: 'Markets', value: 'Forex • Gold • Indices • Crypto' },
+            { label: 'Focus', value: 'Analyze • Trade • Grow' },
+            { label: 'Style', value: 'SMC • ICT • Price Action' },
+            { label: 'Community', value: 'Free Discord & Daily Setups' }
+          ],
+          bioLine1: 'Analyze • Trade • Grow',
+          bioLine2: 'Forex | Gold | Indices | Crypto'
+        },
+        socials: [
+          { id: 'discord', name: 'Discord', url: '#', enabled: true },
+          { id: 'instagram', name: 'Instagram', url: '#', enabled: true },
+          { id: 'x', name: 'X (Twitter)', url: '#', enabled: true },
+          { id: 'youtube', name: 'YouTube', url: '#', enabled: true },
+          { id: 'tiktok', name: 'TikTok', url: '#', enabled: true },
+          { id: 'telegram', name: 'Telegram', url: '#', enabled: false }
+        ],
+        spotlight: {
+          title: 'Join VIP / Mentorship',
+          badge: 'ANALYZE • TRADE • GROW',
+          brandMain: 'YASHRAO VIP',
+          brandSub: 'FOREX • GOLD • INDICES • CRYPTO',
+          url: '#',
+          image: ''
+        },
+        mediaCard: {
+          title: 'Trading Livestreams',
+          url: '#',
+          image: ''
+        },
+        gridCards: [
+          { id: 'discord', title: 'FREE DISCORD', url: '#', image: '' },
+          { id: 'tiktok', title: 'TikTok', url: '#', image: '' },
+          { id: 'instagram', title: 'Instagram', url: '#', image: '' },
+          { id: 'x', title: 'X', url: '#', image: '' }
+        ],
+        banners: [
+          { id: 'b1', title: 'Tradeify', url: '#', theme: 'emerald', logoType: 'tradeify', customLogo: '' },
+          { id: 'b2', title: 'NinjaTrader Demo Account', url: '#', theme: 'orange', logoType: 'ninjatrader', customLogo: '' },
+          { id: 'b3', title: 'Lucid Trading', url: '#', theme: 'eclipse', logoType: 'lucid', customLogo: '' },
+          { id: 'b4', title: 'Apex Trader Funding', url: '#', theme: 'royal', logoType: 'apex', customLogo: '' },
+          { id: 'b5', title: 'Blue Guardian', url: '#', theme: 'steel', logoType: 'blueguardian', customLogo: '' }
+        ]
+      };
+
+      let state = loadState();
+      let activeTab = 'bio';
+      let statsOpen = false;
+      let toastTimer = null;
+      let saveToastDebounce = null;
+      let resetConfirmArmed = false;
+
+      function deepClone(obj) {
+        return JSON.parse(JSON.stringify(obj));
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return deepClone(DEFAULT_STATE);
+          const parsed = JSON.parse(raw);
+          const base = deepClone(DEFAULT_STATE);
+          return {
+            profile: Object.assign(base.profile, parsed.profile || {}),
+            socials: Array.isArray(parsed.socials) && parsed.socials.length ? parsed.socials : base.socials,
+            spotlight: Object.assign(base.spotlight, parsed.spotlight || {}),
+            mediaCard: Object.assign(base.mediaCard, parsed.mediaCard || {}),
+            gridCards: Array.isArray(parsed.gridCards) && parsed.gridCards.length ? parsed.gridCards : base.gridCards,
+            banners: Array.isArray(parsed.banners) ? parsed.banners : base.banners
+          };
+        } catch (err) {
+          return deepClone(DEFAULT_STATE);
+        }
+      }
+
+      function persistState(silent) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (err) {
+          showToast('Image too large for browser storage — still active for Export');
+          return;
+        }
+        if (!silent) {
+          clearTimeout(saveToastDebounce);
+          saveToastDebounce = setTimeout(() => showToast('Saved'), 450);
+        }
+      }
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function isPlaceholderUrl(url) {
+        const u = String(url || '').trim();
+        return !u || u === '#';
+      }
+
+      function normalizeUrl(url) {
+        const trimmed = String(url || '').trim();
+        if (!trimmed || trimmed === '#') return '#';
+        if (/^(https?:|mailto:|tel:)/i.test(trimmed)) return trimmed;
+        return 'https://' + trimmed;
+      }
+
+      /* =====================================================================
+         2. CUSTOM INLINE SVG ASSETS (BRAND CREST, SOCIAL ICONS & BANNER TILES)
+      ===================================================================== */
+      function getVerifiedBadgeSvg(size) {
+        const s = size || 22;
+        return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" aria-label="Verified" class="flex-shrink-0">
+          <path d="M12 1.8l2.18 1.54 2.66-.27 1.13 2.43 2.43 1.13-.27 2.66L22.2 12l-1.54 2.18.27 2.66-2.43 1.13-1.13 2.43-2.66-.27L12 22.2l-2.18-1.54-2.66.27-1.13-2.43-2.43-1.13.27-2.66L1.8 12l1.54-2.18-.27-2.66 2.43-1.13 1.13-2.43 2.66.27L12 1.8z" fill="#6C63FF"/>
+          <path d="M8.6 12.2l2.25 2.25 4.75-4.9" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+      }
+
+      const LINK_CHAIN_SVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>`;
+
+      /* High-detail inline SVG recreation of the "Trade With Yashrao" circular gold-rimmed crest */
+      function getYashraoCrestSvg(compact) {
+        const uid = compact ? 'sm' : 'lg';
+        return `<svg viewBox="0 0 400 400" class="w-full h-full block" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="crestBg_${uid}" cx="50%" cy="46%" r="54%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="76%" stop-color="#f5f3ee"/>
+              <stop offset="100%" stop-color="#e5dfd1"/>
+            </radialGradient>
+            <linearGradient id="goldRim_${uid}" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#9a7228"/>
+              <stop offset="30%" stop-color="#f5dc8c"/>
+              <stop offset="55%" stop-color="#b8872f"/>
+              <stop offset="82%" stop-color="#fae49e"/>
+              <stop offset="100%" stop-color="#7c5617"/>
+            </linearGradient>
+            <linearGradient id="bullFill_${uid}" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2b261d"/>
+              <stop offset="45%" stop-color="#0b0b0d"/>
+              <stop offset="100%" stop-color="#1c1812"/>
+            </linearGradient>
+            <linearGradient id="roadGrad_${uid}" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4af37" stop-opacity="0.7"/>
+              <stop offset="35%" stop-color="#111114"/>
+              <stop offset="100%" stop-color="#050507"/>
+            </linearGradient>
+            <clipPath id="circleClip_${uid}">
+              <circle cx="200" cy="200" r="190"/>
+            </clipPath>
+          </defs>
+
+          <!-- Circular Medallion Surface -->
+          <circle cx="200" cy="200" r="194" fill="url(#goldRim_${uid})"/>
+          <circle cx="200" cy="200" r="189" fill="url(#crestBg_${uid})"/>
+
+          <g clip-path="url(#circleClip_${uid})">
+            <!-- Inner Gold Arc Halo -->
+            <path d="M 118 212 A 96 96 0 1 1 286 126" fill="none" stroke="url(#goldRim_${uid})" stroke-width="3.2" opacity="0.88"/>
+
+            <!-- Top-Left Slogan: ANALYZE / TRADE / GROW -->
+            <line x1="76" y1="68" x2="76" y2="108" stroke="#b8872f" stroke-width="1.6"/>
+            <text x="84" y="80" fill="#18181b" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.2">ANALYZE</text>
+            <text x="84" y="92" fill="#18181b" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.2">TRADE</text>
+            <text x="84" y="104" fill="#18181b" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.2">GROW</text>
+
+            <!-- Rising Black & Gold Candlesticks Behind Bull -->
+            <g opacity="0.9">
+              <line x1="88" y1="168" x2="88" y2="206" stroke="#b8872f" stroke-width="1.2"/>
+              <rect x="84" y="178" width="8" height="18" rx="1" fill="#d4af37"/>
+              <line x1="104" y1="154" x2="104" y2="196" stroke="#27272a" stroke-width="1.2"/>
+              <rect x="100" y="164" width="8" height="22" rx="1" fill="#18181b"/>
+              <line x1="120" y1="142" x2="120" y2="188" stroke="#b8872f" stroke-width="1.2"/>
+              <rect x="116" y="152" width="8" height="24" rx="1" fill="#d4af37"/>
+              <line x1="138" y1="126" x2="138" y2="176" stroke="#18181b" stroke-width="1.2"/>
+              <rect x="134" y="138" width="8" height="24" rx="1" fill="#18181b"/>
+              <line x1="156" y1="114" x2="156" y2="162" stroke="#b8872f" stroke-width="1.2"/>
+              <rect x="152" y="124" width="8" height="24" rx="1" fill="#d4af37"/>
+              <line x1="274" y1="108" x2="274" y2="162" stroke="#18181b" stroke-width="1.4"/>
+              <rect x="269" y="122" width="10" height="26" rx="1" fill="#18181b"/>
+              <line x1="292" y1="84" x2="292" y2="148" stroke="#b8872f" stroke-width="1.4"/>
+              <rect x="287" y="96" width="10" height="36" rx="1" fill="url(#goldRim_${uid})"/>
+              <line x1="310" y1="64" x2="310" y2="122" stroke="#18181b" stroke-width="1.4"/>
+              <rect x="305" y="74" width="10" height="32" rx="1" fill="#18181b"/>
+            </g>
+
+            <!-- Stylized Gold-Horned Black Bull on Craggy Rock -->
+            <g>
+              <!-- Bull body & muscular shoulder -->
+              <path d="M 142 204 C 152 174, 174 148, 192 128 C 204 102, 224 84, 248 80 L 270 76 C 280 76, 288 81, 290 88 C 292 95, 286 101, 275 104 L 266 108 C 266 122, 260 136, 258 150 C 268 164, 278 184, 286 204 Z" fill="url(#bullFill_${uid})"/>
+              <!-- Golden Horn -->
+              <path d="M 244 82 C 224 82, 214 66, 224 48 C 228 42, 235 36, 241 34 C 234 45, 232 58, 242 66 C 249 71, 256 72, 261 76 Z" fill="url(#goldRim_${uid})"/>
+              <!-- Gold veins & shoulder highlight -->
+              <path d="M 164 196 C 180 174, 200 158, 222 146 M 206 112 C 216 128, 234 148, 252 158" fill="none" stroke="#f5dc8c" stroke-width="1.6" stroke-linecap="round" opacity="0.72"/>
+              <!-- Jagged Obsidian & Gold Crag Rock -->
+              <polygon points="154,212 198,174 242,150 284,174 328,212" fill="#0d0d10"/>
+              <polygon points="184,212 222,166 242,150 256,184 294,212" fill="#1e1c18"/>
+              <path d="M 198 174 L 222 184 L 242 150 L 262 188 L 284 174" fill="none" stroke="#eab308" stroke-width="1.4" opacity="0.78"/>
+            </g>
+
+            <!-- Soft Cloud Mist Separating Bull & Typography -->
+            <ellipse cx="200" cy="214" rx="150" ry="22" fill="#f8f7f4" opacity="0.92"/>
+
+            <!-- Brand Typography: TRADE WITH / YASHRAO -->
+            <text x="200" y="232" text-anchor="middle" fill="#09090b" font-family="Inter, sans-serif" font-size="18.5" font-weight="800" letter-spacing="5.5">TRADE WITH</text>
+            <text x="180" y="274" text-anchor="middle" fill="#09090b" font-family="Inter, sans-serif" font-size="47" font-weight="800" letter-spacing="1.5">YASHRA</text>
+            <!-- Stylized "O" with miniature gold candlesticks inside -->
+            <circle cx="305" cy="257" r="18.5" fill="none" stroke="#09090b" stroke-width="5.2"/>
+            <line x1="298" y1="248" x2="298" y2="266" stroke="#b8872f" stroke-width="1.3"/><rect x="296" y="252" width="4" height="10" fill="#d4af37"/>
+            <line x1="305" y1="244" x2="305" y2="268" stroke="#b8872f" stroke-width="1.3"/><rect x="303" y="249" width="4" height="13" fill="#b8872f"/>
+            <line x1="312" y1="247" x2="312" y2="265" stroke="#b8872f" stroke-width="1.3"/><rect x="310" y="251" width="4" height="9" fill="#d4af37"/>
+
+            <!-- Gold Divider + Crown Emblem -->
+            <line x1="108" y1="293" x2="178" y2="293" stroke="#b8872f" stroke-width="1.2"/>
+            <line x1="222" y1="293" x2="292" y2="293" stroke="#b8872f" stroke-width="1.2"/>
+            <path d="M 190 296 L 188 286 L 195 291 L 200 283 L 205 291 L 212 286 L 210 296 Z" fill="url(#goldRim_${uid})"/>
+
+            <!-- Markets Subtitle -->
+            <text x="200" y="314" text-anchor="middle" fill="#18181b" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.4">FOREX  |  GOLD  |  INDICES  |  CRYPTO</text>
+
+            <!-- Soft Horizon Mountains & Winding Gold-Edged Road -->
+            <path d="M 30 356 L 96 328 L 154 344 L 222 332 L 296 322 L 370 352 L 370 398 L 30 398 Z" fill="#e5e1d8" opacity="0.65"/>
+            <path d="M 198 326 C 214 334, 184 344, 212 354 C 248 368, 178 380, 198 398 L 122 398 C 122 378, 224 366, 196 352 C 176 342, 200 334, 188 326 Z" fill="url(#roadGrad_${uid})"/>
+            <path d="M 193 326 C 206 334, 180 344, 206 354 C 234 366, 152 378, 162 398" fill="none" stroke="#f5dc8c" stroke-width="1.8" opacity="0.85"/>
+          </g>
+        </svg>`;
+      }
+
+      /* Social media official brand icons */
+      function getSocialIconSvg(id, size) {
+        const s = size || 20;
+        switch (id) {
+          case 'discord':
+            return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="#ffffff"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>`;
+          case 'instagram':
+            return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.1" fill="#ffffff" stroke="none"/></svg>`;
+          case 'x':
+            return `<svg width="${s - 2}" height="${s - 2}" viewBox="0 0 24 24" fill="#ffffff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+          case 'youtube':
+            return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="#ffffff"><path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418c-.86.23-1.538.908-1.768 1.768C2 7.746 2 12 2 12s0 4.254.418 5.814c.23.86.908 1.538 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>`;
+          case 'tiktok':
+            return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none">
+              <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="#25F4EE" transform="translate(-0.7,-0.5)"/>
+              <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="#FE2C55" transform="translate(0.7,0.5)"/>
+              <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="#ffffff"/>
+            </svg>`;
+          case 'telegram':
+            return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="#ffffff"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>`;
+          default:
+            return LINK_CHAIN_SVG;
+        }
+      }
+
+      function getSocialCircleClass(id) {
+        switch (id) {
+          case 'discord': return 'bg-[#5865F2]';
+          case 'instagram': return 'social-instagram';
+          case 'x': return 'bg-[#18181b] border border-white/15';
+          case 'youtube': return 'bg-[#FF0000]';
+          case 'tiktok': return 'bg-[#09090b] border border-white/15';
+          case 'telegram': return 'bg-[#229ED9]';
+          default: return 'bg-zinc-800 border border-white/15';
+        }
+      }
+
+      /* Dark atmospheric trading livestream SVG for Media Card #2 */
+      function getDefaultMediaSvg() {
+        return `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" class="w-full h-full block" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="mBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#14110c"/>
+              <stop offset="50%" stop-color="#0f172a"/>
+              <stop offset="100%" stop-color="#052e16"/>
+            </linearGradient>
+            <linearGradient id="mFvg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#eab308" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#eab308" stop-opacity="0.04"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="250" fill="url(#mBg)"/>
+          <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+            <line x1="0" y1="55" x2="400" y2="55"/>
+            <line x1="0" y1="115" x2="400" y2="115"/>
+            <line x1="0" y1="175" x2="400" y2="175"/>
+            <line x1="85" y1="0" x2="85" y2="250"/>
+            <line x1="195" y1="0" x2="195" y2="250"/>
+            <line x1="305" y1="0" x2="305" y2="250"/>
+          </g>
+          <!-- Gold XAUUSD Orderblock Zone -->
+          <rect x="160" y="102" width="205" height="36" rx="4" fill="url(#mFvg)" stroke="#eab308" stroke-opacity="0.4" stroke-dasharray="4 3"/>
+          <text x="292" y="124" fill="#fde047" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="1.2">GOLD OB ZONE</text>
+          <!-- Live Candles -->
+          <g>
+            <line x1="48" y1="145" x2="48" y2="192" stroke="#ef4444" stroke-width="2"/><rect x="42" y="156" width="12" height="24" rx="2" fill="#ef4444"/>
+            <line x1="78" y1="158" x2="78" y2="205" stroke="#ef4444" stroke-width="2"/><rect x="72" y="166" width="12" height="26" rx="2" fill="#ef4444"/>
+            <line x1="108" y1="138" x2="108" y2="194" stroke="#10b981" stroke-width="2"/><rect x="102" y="148" width="12" height="34" rx="2" fill="#10b981"/>
+            <line x1="138" y1="114" x2="138" y2="164" stroke="#10b981" stroke-width="2"/><rect x="132" y="124" width="12" height="30" rx="2" fill="#10b981"/>
+            <line x1="168" y1="84" x2="168" y2="140" stroke="#eab308" stroke-width="2"/><rect x="162" y="96" width="12" height="36" rx="2" fill="#eab308"/>
+            <line x1="198" y1="90" x2="198" y2="132" stroke="#ef4444" stroke-width="2"/><rect x="192" y="98" width="12" height="24" rx="2" fill="#ef4444"/>
+            <line x1="228" y1="68" x2="228" y2="122" stroke="#10b981" stroke-width="2"/><rect x="222" y="78" width="12" height="34" rx="2" fill="#10b981"/>
+            <line x1="258" y1="50" x2="258" y2="98" stroke="#10b981" stroke-width="2"/><rect x="252" y="58" width="12" height="30" rx="2" fill="#10b981"/>
+            <line x1="288" y1="36" x2="288" y2="82" stroke="#34d399" stroke-width="2"/><rect x="282" y="44" width="12" height="28" rx="2" fill="#34d399"/>
+          </g>
+          <rect x="292" y="16" width="92" height="24" rx="12" fill="rgba(239,68,68,0.22)" stroke="rgba(239,68,68,0.5)"/>
+          <circle cx="305" cy="28" r="3.5" fill="#ef4444"/>
+          <text x="315" y="31.5" fill="#fecaca" font-family="Inter, sans-serif" font-size="9.5" font-weight="700">NY SESSION</text>
+        </svg>`;
+      }
+
+      /* Atmospheric dark backgrounds for the 4 Grid Cards */
+      function getGridDefaultBg(id) {
+        switch (id) {
+          case 'discord':
+            return `<svg viewBox="0 0 200 156" preserveAspectRatio="xMidYMid slice" class="w-full h-full block"><defs><radialGradient id="gDisc" cx="65%" cy="30%" r="76%"><stop offset="0%" stop-color="#5865F2" stop-opacity="0.72"/><stop offset="56%" stop-color="#151936"/><stop offset="100%" stop-color="#07080f"/></radialGradient></defs><rect width="200" height="156" fill="url(#gDisc)"/><path d="M18 112 Q72 74 120 90 T192 40" fill="none" stroke="#a5b4fc" stroke-opacity="0.45" stroke-width="2"/><circle cx="154" cy="44" r="28" fill="#818cf8" opacity="0.16"/></svg>`;
+          case 'tiktok':
+            return `<svg viewBox="0 0 200 156" preserveAspectRatio="xMidYMid slice" class="w-full h-full block"><defs><radialGradient id="gTikA" cx="28%" cy="32%" r="72%"><stop offset="0%" stop-color="#25F4EE" stop-opacity="0.48"/><stop offset="58%" stop-color="#110b22"/><stop offset="100%" stop-color="#06050a"/></radialGradient><radialGradient id="gTikB" cx="78%" cy="62%" r="55%"><stop offset="0%" stop-color="#FE2C55" stop-opacity="0.45"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="200" height="156" fill="url(#gTikA)"/><rect width="200" height="156" fill="url(#gTikB)"/></svg>`;
+          case 'instagram':
+            return `<svg viewBox="0 0 200 156" preserveAspectRatio="xMidYMid slice" class="w-full h-full block"><defs><radialGradient id="gIg" cx="30%" cy="28%" r="82%"><stop offset="0%" stop-color="#db2777" stop-opacity="0.58"/><stop offset="48%" stop-color="#4c1d95" stop-opacity="0.7"/><stop offset="100%" stop-color="#0a0712"/></radialGradient></defs><rect width="200" height="156" fill="url(#gIg)"/><circle cx="158" cy="40" r="36" fill="#f97316" opacity="0.22"/><rect x="116" y="42" width="54" height="54" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2"/></svg>`;
+          case 'x':
+          default:
+            return `<svg viewBox="0 0 200 156" preserveAspectRatio="xMidYMid slice" class="w-full h-full block"><defs><radialGradient id="gX" cx="62%" cy="28%" r="78%"><stop offset="0%" stop-color="#52525b" stop-opacity="0.62"/><stop offset="56%" stop-color="#18181b"/><stop offset="100%" stop-color="#050507"/></radialGradient></defs><rect width="200" height="156" fill="url(#gX)"/><polyline points="18,116 62,88 94,96 138,48 186,34" fill="none" stroke="#eab308" stroke-opacity="0.55" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+        }
+      }
+
+      /* 54x54 Banner Icon Tiles */
+      function getBannerLogoHtml(banner) {
+        if (banner.customLogo) {
+          return `<img src="${escapeHtml(banner.customLogo)}" alt="${escapeHtml(banner.title)}" class="w-full h-full object-cover" />`;
+        }
+        switch (banner.logoType) {
+          case 'tradeify':
+            return `<div class="w-full h-full bg-[#00e676] flex flex-col items-center justify-center p-1">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <rect x="7" y="13" width="3.5" height="9" rx="1" fill="#042f2e"/>
+                <rect x="14.2" y="7" width="3.5" height="15" rx="1" fill="#042f2e"/>
+                <rect x="21.5" y="10" width="3.5" height="12" rx="1" fill="#042f2e"/>
+                <path d="M5 24.5C9 27.5 23 27.5 27 24.5" stroke="#042f2e" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <span class="text-[8.5px] font-extrabold tracking-tight text-[#042f2e] leading-none">tradeify</span>
+            </div>`;
+          case 'ninjatrader':
+            return `<div class="w-full h-full bg-white flex flex-col items-center justify-center p-1">
+              <svg width="30" height="22" viewBox="0 0 36 24" fill="none">
+                <path d="M5 20V5L16 17V5M19 6H31M25 6V20" stroke="#ea580c" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-[6.8px] font-extrabold tracking-tight text-zinc-900 leading-none mt-0.5">NINJATRADER</span>
+            </div>`;
+          case 'lucid':
+            return `<div class="w-full h-full bg-[#07090f] flex items-center justify-center relative overflow-hidden">
+              <div class="w-9 h-9 rounded-full bg-black border border-sky-200/80 shadow-[0_0_16px_rgba(186,230,253,0.7)]"></div>
+            </div>`;
+          case 'apex':
+            return `<div class="w-full h-full bg-[#060c24] flex items-center justify-center">
+              <svg width="36" height="26" viewBox="0 0 40 28" fill="none">
+                <path d="M5 22L18 7L34 15L23 23L15 16" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 7L34 15L26 22" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>`;
+          case 'blueguardian':
+            return `<div class="w-full h-full bg-[#07101f] flex items-center justify-center">
+              <svg width="30" height="32" viewBox="0 0 32 34" fill="none">
+                <path d="M8 10V19C8 24.5 16 29 16 29C16 29 24 24.5 24 19V10H20V13H17V10H15V13H12V10H8Z" fill="#ffffff"/>
+                <path d="M16 5V10M16 5L22 7L16 9" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 23.5L16 27.5L22 23.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>`;
+          default:
+            return `<div class="w-full h-full bg-zinc-900 border border-amber-400/30 flex items-center justify-center text-white font-extrabold text-[17px]">${escapeHtml((banner.title || 'L').slice(0, 2).toUpperCase())}</div>`;
+        }
+      }
+
+      /* =====================================================================
+         3. RENDER MAIN LINK-IN-BIO PAGE
+      ===================================================================== */
+      function renderBioPage() {
+        const app = document.getElementById('bio-app');
+        const p = state.profile;
+
+        // Update Sticky Top Header
+        document.getElementById('sticky-name').textContent = p.name || 'Trade With Yashrao';
+        document.getElementById('sticky-verified').innerHTML = p.verified ? getVerifiedBadgeSvg(17) : '';
+        document.getElementById('sticky-avatar').innerHTML = p.bioPhoto
+          ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover" />`
+          : getYashraoCrestSvg(true);
+
+        // Hero Section Markup (Circular Emblem vs Full-Bleed Portrait)
+        const isFullBleed = p.heroMode === 'fullbleed';
+        const heroMediaHtml = isFullBleed
+          ? `
+            <div class="relative w-full h-[390px] overflow-hidden hero-obsidian-gold">
+              ${p.bioPhoto
+                ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover object-center" />`
+                : `<div class="w-full h-full flex items-center justify-center pb-14 px-6"><div class="w-[240px] h-[240px] rounded-full overflow-hidden emblem-ring">${getYashraoCrestSvg(false)}</div></div>`}
+              <div class="absolute inset-0 hero-fade"></div>
+              <!-- Subtle 1-Tap Upload Bio Photo button (editor-only) -->
+              <button type="button" id="hero-quick-upload-btn" class="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 hover:bg-black/90 border border-amber-400/45 backdrop-blur-md text-[11.5px] font-semibold text-amber-200 shadow-lg tap-card">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>${p.bioPhoto ? 'Change Photo' : 'Upload Bio Photo'}</span>
+              </button>
+              <div class="absolute inset-x-0 bottom-0 px-4 pb-2 flex flex-col items-center text-center z-10">
+                <div class="flex items-center justify-center gap-2">
+                  <h1 class="text-[30px] leading-tight font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">${escapeHtml(p.name)}</h1>
+                  ${p.verified ? getVerifiedBadgeSvg(23) : ''}
+                </div>
+                <p class="text-[14px] font-medium text-zinc-400 mt-0.5">${escapeHtml(p.handle)}</p>
+              </div>
+            </div>
+          `
+          : `
+            <div class="relative w-full pt-12 pb-3 overflow-hidden hero-obsidian-gold flex flex-col items-center text-center">
+              <!-- Subtle 1-Tap Upload Bio Photo button (editor-only) -->
+              <button type="button" id="hero-quick-upload-btn" class="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 hover:bg-black/90 border border-amber-400/45 backdrop-blur-md text-[11.5px] font-semibold text-amber-200 shadow-lg tap-card">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>${p.bioPhoto ? 'Change Photo' : 'Upload Bio Photo'}</span>
+              </button>
+
+              <!-- Centered Circular Gold-Rimmed Logo Emblem -->
+              <div class="relative z-10 w-[212px] h-[212px] rounded-full overflow-hidden emblem-ring bg-[#f7f5ef] tap-card cursor-pointer" id="hero-emblem-tap" title="Tap to upload your logo photo">
+                ${p.bioPhoto
+                  ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover" />`
+                  : getYashraoCrestSvg(false)}
+              </div>
+
+              <!-- Smooth fade into black behind identity text -->
+              <div class="w-full px-4 pt-5 pb-1 relative z-10" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 72%);">
+                <div class="flex items-center justify-center gap-2">
+                  <h1 class="text-[30px] leading-tight font-extrabold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">${escapeHtml(p.name)}</h1>
+                  ${p.verified ? getVerifiedBadgeSvg(23) : ''}
+                </div>
+                <p class="text-[14px] font-medium text-zinc-400 mt-0.5">${escapeHtml(p.handle)}</p>
+              </div>
+            </div>
+          `;
+
+        // Social Icon Row
+        const socialsHtml = state.socials
+          .filter(s => s.enabled)
+          .map(s => `
+            <a href="${escapeHtml(normalizeUrl(s.url))}" target="_blank" rel="noopener noreferrer"
+               data-link-name="${escapeHtml(s.name)}" data-link-tab="socials"
+               aria-label="${escapeHtml(s.name)}"
+               class="bio-link w-[44px] h-[44px] rounded-full ${getSocialCircleClass(s.id)} flex items-center justify-center tap-card shadow-lg">
+              ${getSocialIconSvg(s.id, 21)}
+            </a>
+          `).join('');
+
+        // Community & Stats Accordion Rows
+        const statsHtml = (p.stats || []).map(item => `
+          <div class="flex items-center justify-between gap-3 py-2 border-b border-white/[0.06] last:border-b-0 text-[13px]">
+            <span class="text-zinc-400 flex-shrink-0">${escapeHtml(item.label)}</span>
+            <span class="text-white font-semibold text-right">${escapeHtml(item.value)}</span>
+          </div>
+        `).join('');
+
+        // 2x2 Visual Grid Cards
+        const gridHtml = state.gridCards.map(card => {
+          const badgeBg = card.id === 'instagram'
+            ? 'social-instagram'
+            : card.id === 'discord'
+              ? 'bg-black/45 backdrop-blur-sm border border-white/15'
+              : 'bg-black/75 border border-white/15';
+
+          const badgeIcon = card.id === 'discord'
+            ? LINK_CHAIN_SVG.replace('width="20" height="20"', 'width="14" height="14"')
+            : getSocialIconSvg(card.id, 14);
+
+          return `
+            <a href="${escapeHtml(normalizeUrl(card.url))}" target="_blank" rel="noopener noreferrer"
+               data-link-name="${escapeHtml(card.title)}" data-link-tab="cards"
+               class="bio-link relative block rounded-[18px] overflow-hidden aspect-[1.28/1] bg-zinc-900 border border-white/[0.08] tap-card shadow-lg">
+              ${card.image
+                ? `<img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.title)}" class="w-full h-full object-cover" />`
+                : getGridDefaultBg(card.id)}
+              <div class="absolute inset-0 card-scrim"></div>
+              <div class="absolute top-2.5 left-2.5 w-[28px] h-[28px] rounded-full ${badgeBg} flex items-center justify-center text-white shadow-md">
+                ${badgeIcon}
+              </div>
+              <div class="absolute inset-x-2 bottom-2.5 text-center">
+                <span class="text-[14.5px] font-bold tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">${escapeHtml(card.title)}</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+
+        // 5+ Ambient Glow Horizontal Banners
+        const bannersHtml = state.banners.map(b => `
+          <a href="${escapeHtml(normalizeUrl(b.url))}" target="_blank" rel="noopener noreferrer"
+             data-link-name="${escapeHtml(b.title)}" data-link-tab="cards"
+             class="bio-link w-full h-[76px] rounded-[18px] px-[14px] py-[10px] flex items-center gap-3.5 banner-${escapeHtml(b.theme || 'emerald')} border border-white/[0.09] shadow-lg tap-card overflow-hidden">
+            <div class="w-[54px] h-[54px] rounded-[12px] overflow-hidden flex-shrink-0 shadow-md">
+              ${getBannerLogoHtml(b)}
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="block text-[16px] font-bold text-white tracking-tight truncate drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]">${escapeHtml(b.title)}</span>
+            </div>
+          </a>
+        `).join('');
+
+        app.innerHTML = `
+          <!-- Full-Bleed Hero Header -->
+          <section class="relative w-full">
+            ${heroMediaHtml}
+
+            <!-- Social Buttons + Stats Pill + Bio Lines -->
+            <div class="px-4 pt-2.5 pb-6 flex flex-col items-center text-center bg-black">
+              <div class="flex items-center justify-center flex-wrap gap-2.5">
+                ${socialsHtml}
+              </div>
+
+              <!-- Community & Stats Dropdown Pill -->
+              <div class="w-full flex flex-col items-center mt-4">
+                <button type="button" id="stats-pill-btn" aria-expanded="${statsOpen}"
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#161618] hover:bg-[#1e1e22] border border-[#27272a] text-[13.5px] font-semibold text-white transition tap-card">
+                  <span>${escapeHtml(p.pillLabel || 'Community & Stats')}</span>
+                  <svg id="pill-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                       style="transition: transform 0.25s ease; transform: rotate(${statsOpen ? '180deg' : '0deg'});">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+
+                <div id="stats-panel" class="accordion-content w-full max-w-[350px] ${statsOpen ? 'open' : ''}">
+                  <div class="accordion-inner">
+                    <div class="rounded-2xl bg-[#111114] border border-white/[0.08] px-4 py-1.5 text-left shadow-xl">
+                      ${statsHtml}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Centered Clean Bio Text -->
+              <div class="mt-5 space-y-2 max-w-[350px]">
+                <p class="text-[15px] leading-snug font-semibold tracking-wide text-white/95">${escapeHtml(p.bioLine1)}</p>
+                <p class="text-[14px] leading-snug font-medium text-zinc-300">${escapeHtml(p.bioLine2)}</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Main Link Cards Stack -->
+          <section class="px-4 space-y-3.5">
+            <!-- Card 1: Featured Large Spotlight Card (Metallic Silver Gradient) -->
+            <a href="${escapeHtml(normalizeUrl(state.spotlight.url))}" target="_blank" rel="noopener noreferrer"
+               data-link-name="${escapeHtml(state.spotlight.title)}" data-link-tab="cards"
+               class="bio-link relative block w-full h-[210px] rounded-[22px] overflow-hidden metallic-spotlight border border-white/15 tap-card shadow-xl">
+              ${state.spotlight.image
+                ? `<img src="${escapeHtml(state.spotlight.image)}" alt="${escapeHtml(state.spotlight.title)}" class="w-full h-full object-cover" />`
+                : `
+                  <div class="absolute inset-0 flex flex-col items-center justify-center pb-7 px-6">
+                    <span class="px-3 py-1 rounded-full bg-black/85 text-amber-300 text-[10px] font-bold tracking-[0.16em] uppercase mb-3 shadow">
+                      ${escapeHtml(state.spotlight.badge || 'ANALYZE • TRADE • GROW')}
+                    </span>
+                    <div class="flex items-center gap-3">
+                      <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+                        <path d="M6 16L18 8V26L6 16Z" fill="#09090b"/>
+                        <path d="M42 16L30 8V26L42 16Z" fill="#09090b"/>
+                        <path d="M18 26L24 38L30 26H18Z" fill="#09090b"/>
+                      </svg>
+                      <div class="text-left">
+                        <div class="text-[26px] font-extrabold tracking-tight text-zinc-950 leading-none">${escapeHtml(state.spotlight.brandMain || 'YASHRAO VIP')}</div>
+                        <div class="text-[9.5px] font-bold tracking-[0.18em] text-zinc-800 mt-1">${escapeHtml(state.spotlight.brandSub || 'FOREX • GOLD • INDICES • CRYPTO')}</div>
+                      </div>
+                    </div>
+                  </div>
+                `}
+              <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.82) 100%);"></div>
+              <div class="absolute top-3.5 left-3.5 w-9 h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white">
+                ${LINK_CHAIN_SVG}
+              </div>
+              <div class="absolute inset-x-4 bottom-3.5 text-center">
+                <span class="text-[18.5px] font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">${escapeHtml(state.spotlight.title)}</span>
+              </div>
+            </a>
+
+            <!-- Card 2: Wide Featured Media Card (16:10, YouTube Badge) -->
+            <a href="${escapeHtml(normalizeUrl(state.mediaCard.url))}" target="_blank" rel="noopener noreferrer"
+               data-link-name="${escapeHtml(state.mediaCard.title)}" data-link-tab="cards"
+               class="bio-link relative block w-full aspect-[16/10] rounded-[20px] overflow-hidden bg-zinc-900 border border-white/[0.08] tap-card shadow-xl">
+              ${state.mediaCard.image
+                ? `<img src="${escapeHtml(state.mediaCard.image)}" alt="${escapeHtml(state.mediaCard.title)}" class="w-full h-full object-cover" />`
+                : getDefaultMediaSvg()}
+              <div class="absolute inset-0 card-scrim"></div>
+              <div class="absolute top-3.5 left-3.5 w-[36px] h-[36px] rounded-full bg-[#FF0000] flex items-center justify-center shadow-lg">
+                ${getSocialIconSvg('youtube', 18)}
+              </div>
+              <div class="absolute inset-x-4 bottom-3.5 text-center">
+                <span class="text-[18.5px] font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">${escapeHtml(state.mediaCard.title)}</span>
+              </div>
+            </a>
+
+            <!-- Cards 3–6: 2x2 Visual Grid -->
+            <div class="grid grid-cols-2 gap-3 pt-0.5">
+              ${gridHtml}
+            </div>
+
+            <!-- Cards 7–11: 5 Stacked Ambient-Glow Horizontal Banners -->
+            <div class="space-y-3 pt-1">
+              ${bannersHtml}
+            </div>
+          </section>
+
+          <!-- Minimal Footer -->
+          <footer class="mt-9 mb-4 px-4 text-center">
+            <div class="inline-flex items-center gap-2.5 text-[13px] text-zinc-500 font-medium">
+              <button type="button" data-footer-modal="privacy" class="hover:text-zinc-300 transition">Privacy Policy</button>
+              <span class="text-zinc-700">|</span>
+              <button type="button" data-footer-modal="terms" class="hover:text-zinc-300 transition">Terms</button>
+              <span class="text-zinc-700">|</span>
+              <button type="button" data-footer-modal="report" class="hover:text-zinc-300 transition">Report</button>
+            </div>
+          </footer>
+        `;
+
+        // Quick 1-Tap Bio Photo Upload trigger on Hero
+        const quickUploadBtn = document.getElementById('hero-quick-upload-btn');
+        if (quickUploadBtn) {
+          quickUploadBtn.addEventListener('click', () => {
+            document.getElementById('quick-bio-photo-input').click();
+          });
+        }
+        const emblemTap = document.getElementById('hero-emblem-tap');
+        if (emblemTap && !p.bioPhoto) {
+          emblemTap.addEventListener('click', () => {
+            document.getElementById('quick-bio-photo-input').click();
+          });
+        }
+
+        // Stats Dropdown toggle
+        const pillBtn = document.getElementById('stats-pill-btn');
+        if (pillBtn) {
+          pillBtn.addEventListener('click', () => {
+            statsOpen = !statsOpen;
+            const panel = document.getElementById('stats-panel');
+            const chev = document.getElementById('pill-chevron');
+            pillBtn.setAttribute('aria-expanded', String(statsOpen));
+            if (panel) panel.classList.toggle('open', statsOpen);
+            if (chev) chev.style.transform = statsOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+          });
+        }
+
+        // Smart Click Handling for Placeholder Links ('#')
+        app.querySelectorAll('.bio-link').forEach(link => {
+          link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (isPlaceholderUrl(href)) {
+              e.preventDefault();
+              const label = link.getAttribute('data-link-name') || 'this button';
+              showToast(`Add your "${label}" URL in Edit Links & Bio`);
+            }
+          });
+        });
+
+        // Footer Info Modals
+        app.querySelectorAll('[data-footer-modal]').forEach(btn => {
+          btn.addEventListener('click', () => openFooterModal(btn.getAttribute('data-footer-modal')));
+        });
+      }
+
+      /* =====================================================================
+         4. IMAGE FILE READER & SMART RESIZE/COMPRESSION TO DATA URL
+      ===================================================================== */
+      function handleImageUpload(file, maxDim, quality, callback) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+          const img = new Image();
+          img.onload = function () {
+            try {
+              const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+              const w = Math.max(1, Math.round(img.width * scale));
+              const h = Math.max(1, Math.round(img.height * scale));
+              const canvas = document.createElement('canvas');
+              canvas.width = w;
+              canvas.height = h;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, w, h);
+              // Keep PNG transparency only if small, otherwise clean high-quality JPEG
+              const isPng = file.type === 'image/png' && w <= 650;
+              const dataUrl = isPng
+                ? canvas.toDataURL('image/png')
+                : canvas.toDataURL('image/jpeg', quality);
+              callback(dataUrl);
+            } catch (err) {
+              showToast('Could not process photo. Try another image.');
+            }
+          };
+          img.onerror = function () {
+            showToast('Invalid image file.');
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      /* =====================================================================
+         5. INTERACTIVE 4-TAB EDITOR DRAWER RENDERER
+      ===================================================================== */
+      function renderEditorDrawer() {
+        document.querySelectorAll('.editor-tab').forEach(btn => {
+          const active = btn.getAttribute('data-tab') === activeTab;
+          btn.className = 'editor-tab py-2 rounded-lg text-[11.5px] font-semibold transition ' +
+            (active ? 'bg-zinc-800 text-amber-300 shadow' : 'text-zinc-400 hover:text-zinc-200');
+        });
+
+        const body = document.getElementById('editor-body');
+
+        /* --- TAB 1: BIO & PHOTO --- */
+        if (activeTab === 'bio') {
+          const p = state.profile;
+          body.innerHTML = `
+            <!-- Bio Photo Uploader & Hero Mode Switch -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/85 border border-amber-400/25 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[13px] font-bold text-white">Bio Logo / Profile Photo</span>
+                ${p.bioPhoto ? `<button type="button" id="ed-clear-photo" class="text-[11.5px] text-rose-400 font-medium">Use Default Crest</button>` : ''}
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-amber-400/50 bg-zinc-950 flex-shrink-0">
+                  ${p.bioPhoto ? `<img src="${escapeHtml(p.bioPhoto)}" alt="Preview" class="w-full h-full object-cover" />` : getYashraoCrestSvg(true)}
+                </div>
+                <label class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/45 text-amber-200 text-[12.5px] font-semibold text-center cursor-pointer transition">
+                  ${p.bioPhoto ? 'Change Bio Photo' : 'Upload Your Logo Photo'}
+                  <input type="file" accept="image/*" id="ed-upload-bio-photo" class="hidden" />
+                </label>
+              </div>
+              <div class="space-y-1.5">
+                <span class="block text-[11.5px] text-zinc-400">Hero Display Style</span>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" data-hero-mode="emblem" class="py-2 rounded-xl text-[12px] font-semibold border transition ${p.heroMode === 'emblem' ? 'bg-zinc-800 border-amber-400/60 text-white' : 'bg-black/50 border-white/10 text-zinc-400'}">
+                    Circular Emblem
+                  </button>
+                  <button type="button" data-hero-mode="fullbleed" class="py-2 rounded-xl text-[12px] font-semibold border transition ${p.heroMode === 'fullbleed' ? 'bg-zinc-800 border-amber-400/60 text-white' : 'bg-black/50 border-white/10 text-zinc-400'}">
+                    Full-Bleed Hero
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Identity Inputs -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-3">
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label class="block text-[11.5px] text-zinc-400 mb-1">Display Name</label>
+                  <input type="text" id="ed-name" value="${escapeHtml(p.name)}" class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[13px] text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-[11.5px] text-zinc-400 mb-1">Handle</label>
+                  <input type="text" id="ed-handle" value="${escapeHtml(p.handle)}" class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[13px] text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <label class="flex items-center justify-between pt-0.5 cursor-pointer">
+                <span class="text-[13px] font-medium text-zinc-200 flex items-center gap-2">
+                  ${getVerifiedBadgeSvg(16)} Verified Checkmark Badge
+                </span>
+                <input type="checkbox" id="ed-verified" ${p.verified ? 'checked' : ''} class="w-4 h-4 accent-indigo-500 rounded" />
+              </label>
+
+              <div>
+                <label class="block text-[11.5px] text-zinc-400 mb-1">Bio Line 1</label>
+                <input type="text" id="ed-bio1" value="${escapeHtml(p.bioLine1)}" class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[13px] text-white focus:outline-none focus:border-amber-400" />
+              </div>
+
+              <div>
+                <label class="block text-[11.5px] text-zinc-400 mb-1">Bio Line 2</label>
+                <input type="text" id="ed-bio2" value="${escapeHtml(p.bioLine2)}" class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[13px] text-white focus:outline-none focus:border-amber-400" />
+              </div>
+
+              <div>
+                <label class="block text-[11.5px] text-zinc-400 mb-1">Stats Pill Button Label</label>
+                <input type="text" id="ed-pill" value="${escapeHtml(p.pillLabel)}" class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[13px] text-white focus:outline-none focus:border-amber-400" />
+              </div>
+            </div>
+
+            <!-- Stats Dropdown Items -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-[12.5px] font-bold text-white">Dropdown Stats / Highlights</span>
+                <button type="button" id="ed-add-stat" class="text-[11.5px] text-amber-300 font-semibold">+ Add Row</button>
+              </div>
+              ${(p.stats || []).map((st, idx) => `
+                <div class="flex items-center gap-1.5">
+                  <input type="text" data-stat-label="${idx}" value="${escapeHtml(st.label)}" placeholder="Label" class="w-2/5 px-2.5 py-2 rounded-lg bg-black/70 border border-white/10 text-[12px] text-zinc-300" />
+                  <input type="text" data-stat-val="${idx}" value="${escapeHtml(st.value)}" placeholder="Value" class="flex-1 px-2.5 py-2 rounded-lg bg-black/70 border border-white/10 text-[12px] text-white" />
+                  <button type="button" data-stat-del="${idx}" aria-label="Remove stat" class="w-7 h-7 rounded-lg bg-white/5 hover:bg-rose-500/20 text-zinc-400 hover:text-rose-400 flex items-center justify-center">×</button>
+                </div>
+              `).join('')}
+            </div>
+          `;
+
+          // Bind Bio & Photo Events
+          body.querySelector('#ed-upload-bio-photo').addEventListener('change', e => {
+            handleImageUpload(e.target.files[0], 800, 0.86, dataUrl => {
+              state.profile.bioPhoto = dataUrl;
+              updateApp(true, 'Bio photo updated');
+            });
+          });
+          const clearBtn = body.querySelector('#ed-clear-photo');
+          if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+              state.profile.bioPhoto = '';
+              updateApp(true, 'Restored default crest');
+            });
+          }
+          body.querySelectorAll('[data-hero-mode]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              state.profile.heroMode = btn.getAttribute('data-hero-mode');
+              updateApp(true, 'Hero style updated');
+            });
+          });
+          body.querySelector('#ed-name').addEventListener('input', e => { state.profile.name = e.target.value; updateApp(false); });
+          body.querySelector('#ed-handle').addEventListener('input', e => { state.profile.handle = e.target.value; updateApp(false); });
+          body.querySelector('#ed-verified').addEventListener('change', e => { state.profile.verified = e.target.checked; updateApp(false); });
+          body.querySelector('#ed-bio1').addEventListener('input', e => { state.profile.bioLine1 = e.target.value; updateApp(false); });
+          body.querySelector('#ed-bio2').addEventListener('input', e => { state.profile.bioLine2 = e.target.value; updateApp(false); });
+          body.querySelector('#ed-pill').addEventListener('input', e => { state.profile.pillLabel = e.target.value; updateApp(false); });
+
+          body.querySelector('#ed-add-stat').addEventListener('click', () => {
+            state.profile.stats.push({ label: 'Highlight', value: 'Add stat here' });
+            updateApp(true, 'Stat row added');
+          });
+          body.querySelectorAll('[data-stat-label]').forEach(el => el.addEventListener('input', e => {
+            state.profile.stats[Number(el.getAttribute('data-stat-label'))].label = e.target.value;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-stat-val]').forEach(el => el.addEventListener('input', e => {
+            state.profile.stats[Number(el.getAttribute('data-stat-val'))].value = e.target.value;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-stat-del]').forEach(el => el.addEventListener('click', () => {
+            state.profile.stats.splice(Number(el.getAttribute('data-stat-del')), 1);
+            updateApp(true, 'Stat row removed');
+          }));
+        }
+
+        /* --- TAB 2: SOCIALS --- */
+        else if (activeTab === 'socials') {
+          body.innerHTML = `
+            <p class="text-[12px] text-zinc-400 px-1">Paste your full profile URLs (e.g. https://instagram.com/tradewithyashrao). Toggle any platform on or off.</p>
+            ${state.socials.map((s, idx) => `
+              <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full ${getSocialCircleClass(s.id)} flex items-center justify-center">
+                      ${getSocialIconSvg(s.id, 15)}
+                    </div>
+                    <span class="text-[13.5px] font-semibold text-white">${escapeHtml(s.name)}</span>
+                  </div>
+                  <label class="inline-flex items-center gap-1.5 text-[12px] text-zinc-400 cursor-pointer">
+                    <span>Show</span>
+                    <input type="checkbox" data-soc-toggle="${idx}" ${s.enabled ? 'checked' : ''} class="w-4 h-4 accent-amber-500" />
+                  </label>
+                </div>
+                <input type="url" data-soc-url="${idx}" value="${s.url === '#' ? '' : escapeHtml(s.url)}"
+                       placeholder="https://..."
+                       class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white placeholder-zinc-500 focus:outline-none focus:border-amber-400" />
+              </div>
+            `).join('')}
+          `;
+
+          body.querySelectorAll('[data-soc-toggle]').forEach(el => el.addEventListener('change', e => {
+            state.socials[Number(el.getAttribute('data-soc-toggle'))].enabled = e.target.checked;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-soc-url]').forEach(el => el.addEventListener('input', e => {
+            const val = e.target.value.trim();
+            state.socials[Number(el.getAttribute('data-soc-url'))].url = val || '#';
+            updateApp(false);
+          }));
+        }
+
+        /* --- TAB 3: CARDS & BANNERS --- */
+        else if (activeTab === 'cards') {
+          const glowThemes = [
+            { id: 'emerald', label: 'Emerald Green' },
+            { id: 'orange', label: 'Orange Silver' },
+            { id: 'eclipse', label: 'Slate Eclipse' },
+            { id: 'royal', label: 'Royal Blue' },
+            { id: 'steel', label: 'Steel Silver' },
+            { id: 'gold', label: 'Luxury Gold' }
+          ];
+
+          body.innerHTML = `
+            <!-- Card 1: Featured Spotlight Card -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-[13px] font-bold text-amber-300">1. Featured Spotlight Card</span>
+                ${state.spotlight.image ? `<button type="button" id="ed-clear-spot" class="text-[11px] text-rose-400">Clear Photo</button>` : ''}
+              </div>
+              <input type="text" id="ed-spot-title" value="${escapeHtml(state.spotlight.title)}" placeholder="Card Title"
+                     class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+              <input type="url" id="ed-spot-url" value="${state.spotlight.url === '#' ? '' : escapeHtml(state.spotlight.url)}" placeholder="https://your-vip-or-partner-link..."
+                     class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="ed-spot-main" value="${escapeHtml(state.spotlight.brandMain)}" placeholder="Center Title"
+                       class="px-2.5 py-2 rounded-xl bg-black/70 border border-white/10 text-[12px] text-zinc-200" />
+                <label class="py-2 px-3 rounded-xl bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[12px] font-semibold text-center cursor-pointer">
+                  Upload Image
+                  <input type="file" accept="image/*" id="ed-upload-spot" class="hidden" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 2: Wide Featured Media Card -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-[13px] font-bold text-amber-300">2. Wide Media Card (Livestreams)</span>
+                ${state.mediaCard.image ? `<button type="button" id="ed-clear-media" class="text-[11px] text-rose-400">Clear Photo</button>` : ''}
+              </div>
+              <input type="text" id="ed-media-title" value="${escapeHtml(state.mediaCard.title)}" placeholder="Card Title"
+                     class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+              <div class="flex gap-2">
+                <input type="url" id="ed-media-url" value="${state.mediaCard.url === '#' ? '' : escapeHtml(state.mediaCard.url)}" placeholder="https://youtube.com/..."
+                       class="flex-1 px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+                <label class="py-2 px-3 rounded-xl bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[12px] font-semibold cursor-pointer flex items-center">
+                  Photo
+                  <input type="file" accept="image/*" id="ed-upload-media" class="hidden" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Cards 3–6: 2x2 Visual Grid Cards -->
+            <div class="space-y-2.5">
+              <span class="block text-[12.5px] font-bold text-zinc-300 px-1">3–6. 2×2 Visual Grid Cards</span>
+              ${state.gridCards.map((c, idx) => `
+                <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[12.5px] font-semibold text-white">Grid Card #${idx + 1}</span>
+                    ${c.image ? `<button type="button" data-g-clear="${idx}" class="text-[11px] text-rose-400">Clear Photo</button>` : ''}
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" data-g-title="${idx}" value="${escapeHtml(c.title)}" placeholder="Label"
+                           class="px-2.5 py-2 rounded-xl bg-black/70 border border-white/10 text-[12px] text-white" />
+                    <label class="py-2 px-2.5 rounded-xl bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[12px] font-semibold text-center cursor-pointer">
+                      Upload Photo
+                      <input type="file" accept="image/*" data-g-upload="${idx}" class="hidden" />
+                    </label>
+                  </div>
+                  <input type="url" data-g-url="${idx}" value="${c.url === '#' ? '' : escapeHtml(c.url)}" placeholder="https://..."
+                         class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12px] text-white" />
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Cards 7–11+: Ambient-Glow Horizontal Banners -->
+            <div class="space-y-2.5 pt-1">
+              <span class="block text-[12.5px] font-bold text-zinc-300 px-1">Glow Banners (Prop Firms &amp; Links)</span>
+              ${state.banners.map((b, idx) => `
+                <div class="p-3.5 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[12.5px] font-semibold text-white">Banner #${idx + 1}</span>
+                    <button type="button" data-b-del="${idx}" class="text-[11.5px] text-rose-400 hover:text-rose-300 font-medium">Delete</button>
+                  </div>
+                  <input type="text" data-b-title="${idx}" value="${escapeHtml(b.title)}" placeholder="Banner Title"
+                         class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+                  <input type="url" data-b-url="${idx}" value="${b.url === '#' ? '' : escapeHtml(b.url)}" placeholder="https://..."
+                         class="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/10 text-[12.5px] text-white" />
+                  <div class="flex items-center gap-2">
+                    <select data-b-theme="${idx}" class="flex-1 px-2.5 py-2 rounded-xl bg-black/70 border border-white/10 text-[12px] text-white">
+                      ${glowThemes.map(t => `<option value="${t.id}" ${b.theme === t.id ? 'selected' : ''}>Glow: ${t.label}</option>`).join('')}
+                    </select>
+                    <label class="py-2 px-3 rounded-xl bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[11.5px] font-semibold cursor-pointer">
+                      Icon
+                      <input type="file" accept="image/*" data-b-upload="${idx}" class="hidden" />
+                    </label>
+                    ${b.customLogo ? `<button type="button" data-b-clear="${idx}" class="text-[11px] text-rose-400">Reset</button>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+
+              <button type="button" id="ed-add-banner"
+                      class="w-full py-3 rounded-xl border border-dashed border-amber-400/40 hover:border-amber-400 text-amber-200 text-[13px] font-semibold transition">
+                + Add New Banner
+              </button>
+            </div>
+          `;
+
+          // Bind Spotlight & Media Events
+          body.querySelector('#ed-spot-title').addEventListener('input', e => { state.spotlight.title = e.target.value; updateApp(false); });
+          body.querySelector('#ed-spot-main').addEventListener('input', e => { state.spotlight.brandMain = e.target.value; updateApp(false); });
+          body.querySelector('#ed-spot-url').addEventListener('input', e => { state.spotlight.url = e.target.value.trim() || '#'; updateApp(false); });
+          body.querySelector('#ed-upload-spot').addEventListener('change', e => {
+            handleImageUpload(e.target.files[0], 850, 0.82, dataUrl => {
+              state.spotlight.image = dataUrl;
+              updateApp(true, 'Spotlight image updated');
+            });
+          });
+          const clearSpot = body.querySelector('#ed-clear-spot');
+          if (clearSpot) clearSpot.addEventListener('click', () => { state.spotlight.image = ''; updateApp(true); });
+
+          body.querySelector('#ed-media-title').addEventListener('input', e => { state.mediaCard.title = e.target.value; updateApp(false); });
+          body.querySelector('#ed-media-url').addEventListener('input', e => { state.mediaCard.url = e.target.value.trim() || '#'; updateApp(false); });
+          body.querySelector('#ed-upload-media').addEventListener('change', e => {
+            handleImageUpload(e.target.files[0], 850, 0.82, dataUrl => {
+              state.mediaCard.image = dataUrl;
+              updateApp(true, 'Media card image updated');
+            });
+          });
+          const clearMedia = body.querySelector('#ed-clear-media');
+          if (clearMedia) clearMedia.addEventListener('click', () => { state.mediaCard.image = ''; updateApp(true); });
+
+          // Bind Grid Events
+          body.querySelectorAll('[data-g-title]').forEach(el => el.addEventListener('input', e => {
+            state.gridCards[Number(el.getAttribute('data-g-title'))].title = e.target.value;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-g-url]').forEach(el => el.addEventListener('input', e => {
+            state.gridCards[Number(el.getAttribute('data-g-url'))].url = e.target.value.trim() || '#';
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-g-upload]').forEach(el => el.addEventListener('change', e => {
+            const idx = Number(el.getAttribute('data-g-upload'));
+            handleImageUpload(e.target.files[0], 560, 0.82, dataUrl => {
+              state.gridCards[idx].image = dataUrl;
+              updateApp(true, 'Grid photo updated');
+            });
+          }));
+          body.querySelectorAll('[data-g-clear]').forEach(el => el.addEventListener('click', () => {
+            state.gridCards[Number(el.getAttribute('data-g-clear'))].image = '';
+            updateApp(true);
+          }));
+
+          // Bind Banner Events
+          body.querySelectorAll('[data-b-title]').forEach(el => el.addEventListener('input', e => {
+            state.banners[Number(el.getAttribute('data-b-title'))].title = e.target.value;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-b-url]').forEach(el => el.addEventListener('input', e => {
+            state.banners[Number(el.getAttribute('data-b-url'))].url = e.target.value.trim() || '#';
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-b-theme]').forEach(el => el.addEventListener('change', e => {
+            state.banners[Number(el.getAttribute('data-b-theme'))].theme = e.target.value;
+            updateApp(false);
+          }));
+          body.querySelectorAll('[data-b-upload]').forEach(el => el.addEventListener('change', e => {
+            const idx = Number(el.getAttribute('data-b-upload'));
+            handleImageUpload(e.target.files[0], 220, 0.86, dataUrl => {
+              state.banners[idx].customLogo = dataUrl;
+              updateApp(true, 'Banner icon updated');
+            });
+          }));
+          body.querySelectorAll('[data-b-clear]').forEach(el => el.addEventListener('click', () => {
+            state.banners[Number(el.getAttribute('data-b-clear'))].customLogo = '';
+            updateApp(true);
+          }));
+          body.querySelectorAll('[data-b-del]').forEach(el => el.addEventListener('click', () => {
+            state.banners.splice(Number(el.getAttribute('data-b-del')), 1);
+            updateApp(true, 'Banner deleted');
+          }));
+          body.querySelector('#ed-add-banner').addEventListener('click', () => {
+            state.banners.push({
+              id: 'b' + Date.now(),
+              title: 'New Custom Link',
+              url: '#',
+              theme: 'gold',
+              logoType: 'custom',
+              customLogo: ''
+            });
+            updateApp(true, 'New banner added');
+          });
+        }
+
+        /* --- TAB 4: EXPORT & FREE HOSTING --- */
+        else if (activeTab === 'export') {
+          resetConfirmArmed = false;
+          body.innerHTML = `
+            <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-500/15 via-zinc-900 to-zinc-950 border border-amber-400/35 space-y-3">
+              <h3 class="text-[15px] font-bold text-white">Ready to Publish for Free</h3>
+              <p class="text-[12.5px] leading-relaxed text-zinc-300">
+                Download a clean, standalone <code class="text-amber-300 font-semibold">index.html</code> with all your uploaded photos and links embedded — and all editor buttons completely removed.
+              </p>
+
+              <button type="button" id="ed-download-btn"
+                      class="w-full py-3.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-black text-[13.5px] font-extrabold flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>Download Clean index.html</span>
+              </button>
+
+              <button type="button" id="ed-copy-btn"
+                      class="w-full py-3 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-white/10 text-white text-[13px] font-semibold flex items-center justify-center gap-2 transition">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                <span>Copy Clean HTML Code</span>
+              </button>
+            </div>
+
+            <!-- 3-Step Free Hosting Guide -->
+            <div class="p-4 rounded-2xl bg-zinc-900/80 border border-white/[0.08] space-y-2.5">
+              <h4 class="text-[13px] font-bold text-white">How to Host Free in 60 Seconds</h4>
+              <ol class="text-[12.5px] text-zinc-300 space-y-2 list-decimal list-inside leading-relaxed">
+                <li>Tap <strong class="text-white">Download Clean index.html</strong> above.</li>
+                <li>Open <strong class="text-amber-300">app.netlify.com/drop</strong> (or create a free GitHub Pages repo) and drop your <code class="text-zinc-200">index.html</code> inside a folder.</li>
+                <li>Copy your free live URL and paste it into your Instagram, YouTube, TikTok &amp; X bios.</li>
+              </ol>
+            </div>
+
+            <!-- Safe 2-Tap Reset to Default (no browser confirm()) -->
+            <div class="p-3.5 rounded-2xl bg-zinc-900/60 border border-white/[0.06] flex items-center justify-between">
+              <div>
+                <div class="text-[12.5px] font-semibold text-zinc-200">Reset to Default</div>
+                <div class="text-[11px] text-zinc-500">Restores original template &amp; clears uploads</div>
+              </div>
+              <button type="button" id="ed-reset-btn"
+                      class="px-3.5 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/35 text-rose-300 text-[12px] font-semibold transition">
+                Reset
+              </button>
+            </div>
+          `;
+
+          body.querySelector('#ed-download-btn').addEventListener('click', downloadCleanHtml);
+          body.querySelector('#ed-copy-btn').addEventListener('click', () => {
+            copyTextToClipboard(buildCleanStandaloneHTML(), 'Clean HTML copied to clipboard');
+          });
+          const resetBtn = body.querySelector('#ed-reset-btn');
+          resetBtn.addEventListener('click', () => {
+            if (!resetConfirmArmed) {
+              resetConfirmArmed = true;
+              resetBtn.textContent = 'Tap Again to Confirm';
+              resetBtn.classList.add('bg-rose-600', 'text-white');
+              return;
+            }
+            state = deepClone(DEFAULT_STATE);
+            try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+            resetConfirmArmed = false;
+            renderBioPage();
+            renderEditorDrawer();
+            showToast('Reset to default template');
+          });
+        }
+      }
+
+      function updateApp(reRenderDrawer, customToast) {
+        persistState(Boolean(customToast));
+        renderBioPage();
+        if (reRenderDrawer) renderEditorDrawer();
+        if (customToast) showToast(customToast);
+      }
+
+      /* =====================================================================
+         6. STANDALONE WATERMARK-FREE PRODUCTION HTML EXPORTER
+      ===================================================================== */
+      function buildCleanStandaloneHTML() {
+        const p = state.profile;
+        const avatarInner = p.bioPhoto
+          ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="cover-img" />`
+          : getYashraoCrestSvg(true);
+
+        const isFullBleed = p.heroMode === 'fullbleed';
+        const heroSection = isFullBleed
+          ? `<section class="hero-full">
+              ${p.bioPhoto
+                ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="cover-img" />`
+                : `<div class="hero-full-center"><div class="emblem">${getYashraoCrestSvg(false)}</div></div>`}
+              <div class="hero-fade"></div>
+              <div class="hero-overlay">
+                <div class="name-row"><h1>${escapeHtml(p.name)}</h1>${p.verified ? getVerifiedBadgeSvg(23) : ''}</div>
+                <p class="handle">${escapeHtml(p.handle)}</p>
+              </div>
+            </section>`
+          : `<section class="hero-emblem-wrap">
+              <div class="emblem">${p.bioPhoto ? `<img src="${escapeHtml(p.bioPhoto)}" alt="${escapeHtml(p.name)}" class="cover-img" />` : getYashraoCrestSvg(false)}</div>
+              <div class="hero-id-fade">
+                <div class="name-row"><h1>${escapeHtml(p.name)}</h1>${p.verified ? getVerifiedBadgeSvg(23) : ''}</div>
+                <p class="handle">${escapeHtml(p.handle)}</p>
+              </div>
+            </section>`;
+
+        const socialsMarkup = state.socials
+          .filter(s => s.enabled)
+          .map(s => `<a href="${escapeHtml(normalizeUrl(s.url))}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(s.name)}" class="social-btn social-${s.id} tap-card">${getSocialIconSvg(s.id, 21)}</a>`)
+          .join('');
+
+        const statsMarkup = (p.stats || []).map(st =>
+          `<div class="stat-row"><span class="stat-l">${escapeHtml(st.label)}</span><span class="stat-v">${escapeHtml(st.value)}</span></div>`
+        ).join('');
+
+        const gridMarkup = state.gridCards.map(c => {
+          const badgeClass = c.id === 'instagram' ? 'social-instagram' : 'badge-dark';
+          const badgeIcon = c.id === 'discord'
+            ? LINK_CHAIN_SVG.replace('width="20" height="20"', 'width="14" height="14"')
+            : getSocialIconSvg(c.id, 14);
+          return `<a href="${escapeHtml(normalizeUrl(c.url))}" target="_blank" rel="noopener noreferrer" class="grid-card tap-card">
+            ${c.image ? `<img src="${escapeHtml(c.image)}" alt="${escapeHtml(c.title)}" class="cover-img" />` : getGridDefaultBg(c.id)}
+            <div class="card-scrim"></div>
+            <div class="grid-badge ${badgeClass}">${badgeIcon}</div>
+            <div class="grid-title">${escapeHtml(c.title)}</div>
+          </a>`;
+        }).join('');
+
+        const bannersMarkup = state.banners.map(b => {
+          let logoHtml = '';
+          if (b.customLogo) {
+            logoHtml = `<img src="${escapeHtml(b.customLogo)}" alt="${escapeHtml(b.title)}" class="cover-img" />`;
+          } else if (b.logoType === 'tradeify') {
+            logoHtml = `<div class="tile" style="background:#00e676;flex-direction:column;padding:4px;"><svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect x="7" y="13" width="3.5" height="9" rx="1" fill="#042f2e"/><rect x="14.2" y="7" width="3.5" height="15" rx="1" fill="#042f2e"/><rect x="21.5" y="10" width="3.5" height="12" rx="1" fill="#042f2e"/><path d="M5 24.5C9 27.5 23 27.5 27 24.5" stroke="#042f2e" stroke-width="2.5" stroke-linecap="round"/></svg><span style="font-size:8.5px;font-weight:800;color:#042f2e;line-height:1;">tradeify</span></div>`;
+          } else if (b.logoType === 'ninjatrader') {
+            logoHtml = `<div class="tile" style="background:#ffffff;flex-direction:column;padding:4px;"><svg width="28" height="20" viewBox="0 0 36 24" fill="none"><path d="M5 20V5L16 17V5M19 6H31M25 6V20" stroke="#ea580c" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:6.8px;font-weight:800;color:#18181b;line-height:1;margin-top:2px;">NINJATRADER</span></div>`;
+          } else if (b.logoType === 'lucid') {
+            logoHtml = `<div class="tile" style="background:#07090f;"><div style="width:34px;height:34px;border-radius:9999px;background:#000;border:1px solid rgba(186,230,253,.85);box-shadow:0 0 14px rgba(186,230,253,.7);"></div></div>`;
+          } else if (b.logoType === 'apex') {
+            logoHtml = `<div class="tile" style="background:#060c24;"><svg width="34" height="24" viewBox="0 0 40 28" fill="none"><path d="M5 22L18 7L34 15L23 23L15 16" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 7L34 15L26 22" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+          } else if (b.logoType === 'blueguardian') {
+            logoHtml = `<div class="tile" style="background:#07101f;"><svg width="28" height="30" viewBox="0 0 32 34" fill="none"><path d="M8 10V19C8 24.5 16 29 16 29C16 29 24 24.5 24 19V10H20V13H17V10H15V13H12V10H8Z" fill="#fff"/><path d="M16 5V10M16 5L22 7L16 9" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 23.5L16 27.5L22 23.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+          } else {
+            logoHtml = `<div class="tile" style="background:#18181b;color:#fff;font-weight:800;font-size:16px;">${escapeHtml((b.title || 'L').slice(0, 2).toUpperCase())}</div>`;
+          }
+
+          return `<a href="${escapeHtml(normalizeUrl(b.url))}" target="_blank" rel="noopener noreferrer" class="banner banner-${escapeHtml(b.theme || 'emerald')} tap-card">
+            <div class="banner-logo">${logoHtml}</div>
+            <div class="banner-title">${escapeHtml(b.title)}</div>
+          </a>`;
+        }).join('');
+
+        return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <title>${escapeHtml(p.name)} | Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;padding:0;background:#000;color:#fff;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:430px;width:100%;margin:0 auto;min-height:100vh;background:#000;padding-bottom:36px}
+    .cover-img{width:100%;height:100%;object-fit:cover;display:block}
+    .sticky{position:fixed;top:0;left:0;right:0;z-index:40;transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .24s ease}
+    .sticky.visible{transform:translateY(0);opacity:1;pointer-events:auto}
+    .sticky-in{max-width:430px;margin:0 auto;height:58px;padding:0 16px;background:rgba(10,10,12,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px;cursor:pointer}
+    .avatar{width:36px;height:36px;border-radius:9999px;overflow:hidden;border:1px solid rgba(251,191,36,.5);flex-shrink:0}
+    .sticky-name{font-size:15.5px;font-weight:700;letter-spacing:-0.01em}
+    .hero-emblem-wrap{position:relative;width:100%;padding:48px 0 12px;display:flex;flex-direction:column;align-items:center;text-align:center;background:radial-gradient(circle at 50% 34%,rgba(212,175,55,.24) 0%,rgba(161,120,32,.1) 34%,rgba(12,12,15,.94) 68%,#000 100%),linear-gradient(180deg,#0b0b0e 0%,#050507 65%,#000 100%)}
+    .emblem{width:212px;height:212px;border-radius:9999px;overflow:hidden;background:#f7f5ef;box-shadow:0 0 0 2px rgba(212,175,55,.65),0 0 42px rgba(212,175,55,.22),0 18px 42px rgba(0,0,0,.85)}
+    .hero-id-fade{width:100%;padding:20px 16px 4px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 72%)}
+    .hero-full{position:relative;width:100%;height:390px;overflow:hidden;background:radial-gradient(circle at 50% 34%,rgba(212,175,55,.24) 0%,#0b0b0e 65%,#000 100%)}
+    .hero-full-center{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding-bottom:54px}
+    .hero-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.16) 44%,rgba(0,0,0,.78) 78%,#000 100%)}
+    .hero-overlay{position:absolute;left:0;right:0;bottom:0;padding:0 16px 8px;text-align:center}
+    .name-row{display:flex;align-items:center;justify-content:center;gap:8px}
+    h1{margin:0;font-size:30px;line-height:1.15;font-weight:800;letter-spacing:-0.025em;text-shadow:0 2px 10px rgba(0,0,0,.85)}
+    .handle{margin:3px 0 0;font-size:14px;font-weight:500;color:#9ca3af}
+    .profile-body{padding:10px 16px 24px;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .socials{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px}
+    .social-btn{width:44px;height:44px;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.45)}
+    .social-discord{background:#5865F2}
+    .social-instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+    .social-x{background:#18181b;border:1px solid rgba(255,255,255,.15)}
+    .social-youtube{background:#FF0000}
+    .social-tiktok{background:#09090b;border:1px solid rgba(255,255,255,.15)}
+    .social-telegram{background:#229ED9}
+    .pill-wrap{width:100%;display:flex;flex-direction:column;align-items:center;margin-top:16px}
+    .pill-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:9999px;background:#161618;border:1px solid #27272a;color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+    .pill-chev{transition:transform .25s ease}
+    .pill-btn.open .pill-chev{transform:rotate(180deg)}
+    .acc{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .28s ease,opacity .24s ease,margin-top .24s ease;width:100%;max-width:350px}
+    .acc.open{grid-template-rows:1fr;opacity:1;margin-top:12px}
+    .acc-in{overflow:hidden}
+    .stat-box{border-radius:16px;background:#111114;border:1px solid rgba(255,255,255,.08);padding:6px 16px;text-align:left}
+    .stat-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+    .stat-row:last-child{border-bottom:none}
+    .stat-l{color:#a1a1aa}
+    .stat-v{color:#fff;font-weight:600;text-align:right}
+    .bio{margin-top:20px;max-width:350px}
+    .bio p{margin:0;font-size:15px;line-height:1.4;font-weight:600;color:rgba(255,255,255,.95)}
+    .bio p+p{margin-top:8px;font-size:14px;font-weight:500;color:#d4d4d8}
+    .stack{padding:0 16px;display:flex;flex-direction:column;gap:14px}
+    .card-lg{position:relative;display:block;width:100%;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+    .card-spot{height:210px;border-radius:22px;background:linear-gradient(180deg,#f4f5f7 0%,#cdd2da 36%,#6f7580 74%,#23252a 100%)}
+    .card-media{aspect-ratio:16/10;border-radius:20px;background:#111827}
+    .spot-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px 28px}
+    .spot-pill{padding:4px 12px;border-radius:9999px;background:rgba(0,0,0,.85);color:#fcd34d;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+    .spot-brand{display:flex;align-items:center;gap:12px}
+    .spot-main{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:#09090b;line-height:1}
+    .spot-sub{font-size:9.5px;font-weight:700;letter-spacing:.18em;color:#27272a;margin-top:4px}
+    .card-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.22) 48%,rgba(0,0,0,.82) 100%)}
+    .spot-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 100%)}
+    .corner{position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff}
+    .corner-link{background:rgba(0,0,0,.25);backdrop-filter:blur(6px)}
+    .corner-yt{background:#FF0000;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+    .card-title{position:absolute;left:16px;right:16px;bottom:14px;text-align:center;font-size:18.5px;font-weight:700;letter-spacing:-0.015em;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.88)}
+    .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .grid-card{position:relative;display:block;border-radius:18px;overflow:hidden;aspect-ratio:1.28/1;background:#18181b;border:1px solid rgba(255,255,255,.08)}
+    .grid-badge{position:absolute;top:10px;left:10px;width:28px;height:28px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+    .badge-dark{background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.15)}
+    .grid-title{position:absolute;left:8px;right:8px;bottom:10px;text-align:center;font-size:14.5px;font-weight:700;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.85)}
+    .banners{display:flex;flex-direction:column;gap:12px;padding-top:2px}
+    .banner{width:100%;height:76px;border-radius:18px;padding:10px 14px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,.09);overflow:hidden}
+    .banner-logo{width:54px;height:54px;border-radius:12px;overflow:hidden;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+    .tile{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .banner-title{font-size:16px;font-weight:700;letter-spacing:-0.01em;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,.45)}
+    .banner-emerald{background:radial-gradient(circle at 18% 50%,rgba(16,185,129,.88) 0%,rgba(5,150,105,.28) 44%,transparent 72%),radial-gradient(circle at 88% 50%,rgba(16,185,129,.65) 0%,rgba(6,78,59,.42) 55%,transparent 82%),linear-gradient(90deg,#059669 0%,#053e2f 52%,#059669 100%)}
+    .banner-orange{background:radial-gradient(circle at 44% 50%,rgba(234,88,12,.94) 0%,rgba(194,65,12,.48) 48%,transparent 76%),linear-gradient(90deg,#b9bdc5 0%,#d4d7dc 16%,#c2410c 46%,#9ca3af 86%,#b5bac2 100%)}
+    .banner-eclipse{background:radial-gradient(circle at 18% 50%,rgba(71,85,105,.55) 0%,rgba(15,23,42,.35) 48%,transparent 74%),radial-gradient(circle at 86% 50%,rgba(30,41,59,.58) 0%,transparent 72%),linear-gradient(90deg,#1e242d 0%,#0b0e14 54%,#111827 100%)}
+    .banner-royal{background:radial-gradient(circle at 22% 50%,rgba(29,78,216,.82) 0%,rgba(30,58,138,.35) 48%,transparent 75%),radial-gradient(circle at 86% 50%,rgba(148,163,184,.52) 0%,rgba(15,23,42,.35) 56%,transparent 82%),linear-gradient(90deg,#172554 0%,#1e293b 54%,#64748b 100%)}
+    .banner-steel{background:radial-gradient(circle at 52% 50%,rgba(226,232,240,.72) 0%,rgba(71,85,105,.45) 54%,transparent 84%),linear-gradient(90deg,#0b1120 0%,#64748b 44%,#cbd5e1 68%,#0f172a 100%)}
+    .banner-gold{background:radial-gradient(circle at 24% 50%,rgba(212,175,55,.78) 0%,rgba(146,104,24,.32) 48%,transparent 75%),radial-gradient(circle at 88% 50%,rgba(212,175,55,.38) 0%,transparent 70%),linear-gradient(90deg,#422006 0%,#18140d 55%,#713f12 100%)}
+    .tap-card{transition:transform .18s cubic-bezier(.22,1,.36,1),filter .18s ease}
+    .tap-card:active{transform:scale(.975);filter:brightness(1.06)}
+    footer{margin-top:34px;text-align:center;font-size:13px;color:#71717a}
+    footer a{color:#71717a;margin:0 8px}
+    footer a:hover{color:#d4d4d8}
+  </style>
+</head>
+<body>
+  <header id="sticky" class="sticky">
+    <div class="sticky-in" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="avatar">${avatarInner}</div>
+      <span class="sticky-name">${escapeHtml(p.name)}</span>
+      ${p.verified ? getVerifiedBadgeSvg(17) : ''}
+    </div>
+  </header>
+
+  <main class="wrap">
+    ${heroSection}
+
+    <section class="profile-body">
+      <div class="socials">${socialsMarkup}</div>
+      <div class="pill-wrap">
+        <button type="button" id="pillBtn" class="pill-btn tap-card" aria-expanded="false">
+          <span>${escapeHtml(p.pillLabel || 'Community & Stats')}</span>
+          <svg class="pill-chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc" class="acc"><div class="acc-in"><div class="stat-box">${statsMarkup}</div></div></div>
+      </div>
+      <div class="bio">
+        <p>${escapeHtml(p.bioLine1)}</p>
+        <p>${escapeHtml(p.bioLine2)}</p>
+      </div>
+    </section>
+
+    <section class="stack">
+      <a href="${escapeHtml(normalizeUrl(state.spotlight.url))}" target="_blank" rel="noopener noreferrer" class="card-lg card-spot tap-card">
+        ${state.spotlight.image
+          ? `<img src="${escapeHtml(state.spotlight.image)}" alt="${escapeHtml(state.spotlight.title)}" class="cover-img" />`
+          : `<div class="spot-center"><span class="spot-pill">${escapeHtml(state.spotlight.badge)}</span><div class="spot-brand"><svg width="42" height="42" viewBox="0 0 48 48" fill="none"><path d="M6 16L18 8V26L6 16Z" fill="#09090b"/><path d="M42 16L30 8V26L42 16Z" fill="#09090b"/><path d="M18 26L24 38L30 26H18Z" fill="#09090b"/></svg><div><div class="spot-main">${escapeHtml(state.spotlight.brandMain)}</div><div class="spot-sub">${escapeHtml(state.spotlight.brandSub)}</div></div></div></div>`}
+        <div class="spot-scrim"></div>
+        <div class="corner corner-link">${LINK_CHAIN_SVG}</div>
+        <div class="card-title">${escapeHtml(state.spotlight.title)}</div>
+      </a>
+
+      <a href="${escapeHtml(normalizeUrl(state.mediaCard.url))}" target="_blank" rel="noopener noreferrer" class="card-lg card-media tap-card">
+        ${state.mediaCard.image ? `<img src="${escapeHtml(state.mediaCard.image)}" alt="${escapeHtml(state.mediaCard.title)}" class="cover-img" />` : getDefaultMediaSvg()}
+        <div class="card-scrim"></div>
+        <div class="corner corner-yt">${getSocialIconSvg('youtube', 18)}</div>
+        <div class="card-title">${escapeHtml(state.mediaCard.title)}</div>
+      </a>
+
+      <div class="grid2">${gridMarkup}</div>
+      <div class="banners">${bannersMarkup}</div>
+    </section>
+
+    <footer>
+      <a href="#top">Privacy Policy</a>|<a href="#top">Terms</a>|<a href="#top">Report</a>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      var s=document.getElementById('sticky');
+      window.addEventListener('scroll',function(){
+        if(window.scrollY>260){s.classList.add('visible')}else{s.classList.remove('visible')}
+      },{passive:true});
+      var b=document.getElementById('pillBtn'),a=document.getElementById('acc');
+      if(b&&a){b.addEventListener('click',function(){
+        var o=a.classList.toggle('open');
+        b.classList.toggle('open',o);
+        b.setAttribute('aria-expanded',String(o));
+      });}
+    })();
+  <\/script>
+</body>
+</html>`;
+      }
+
+      /* =====================================================================
+         7. CONTROLS, CLIPBOARD, DOWNLOAD, MODALS & SCROLL OBSERVER
+      ===================================================================== */
+      function showToast(msg) {
+        const box = document.getElementById('toast-box');
+        box.textContent = msg;
+        box.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => box.classList.remove('show'), 2500);
+      }
+
+      function copyTextToClipboard(text, successMsg) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, text.length);
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast(ok ? successMsg : 'Tap Download Clean index.html instead');
+        } catch (err) {
+          showToast('Copy unavailable — use Download Clean index.html');
+        }
+      }
+
+      function downloadCleanHtml() {
+        try {
+          const html = buildCleanStandaloneHTML();
+          const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'index.html';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(url), 1500);
+          showToast('Downloaded clean index.html');
+        } catch (err) {
+          showToast('Download blocked — use Copy Clean HTML Code');
+        }
+      }
+
+      function openDrawer(initialTab) {
+        if (initialTab) activeTab = initialTab;
+        renderEditorDrawer();
+        document.getElementById('editor-backdrop').classList.add('open');
+        requestAnimationFrame(() => document.getElementById('editor-drawer').classList.add('open'));
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        document.getElementById('editor-drawer').classList.remove('open');
+        document.getElementById('editor-backdrop').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function openFooterModal(type) {
+        const modal = document.getElementById('info-modal');
+        const title = document.getElementById('info-modal-title');
+        const body = document.getElementById('info-modal-body');
+        if (type === 'privacy') {
+          title.textContent = 'Privacy Policy';
+          body.textContent = 'This Link in Bio page does not collect, sell, or track personal visitor data. Clicking any card takes you directly to the official channel or partner website.';
+        } else if (type === 'terms') {
+          title.textContent = 'Terms & Risk Disclosure';
+          body.textContent = 'Trading Forex, Gold, Indices, and Crypto carries substantial risk of loss and is not suitable for every investor. All content shared by Trade With Yashrao is strictly educational and not financial advice.';
+        } else {
+          title.textContent = 'Report an Issue';
+          body.textContent = 'If a link is broken or you notice impersonation of @tradewithyashrao, please reach out directly through the official verified social channels listed on this page.';
+        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeFooterModal() {
+        const modal = document.getElementById('info-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      // Sticky Scroll Header Listener
+      window.addEventListener('scroll', () => {
+        const sticky = document.getElementById('sticky-header');
+        if (window.scrollY > 260) {
+          sticky.classList.add('visible');
+        } else {
+          sticky.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      // Quick 1-Tap Hero Bio Photo File Input Listener
+      document.getElementById('quick-bio-photo-input').addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        handleImageUpload(file, 800, 0.86, dataUrl => {
+          state.profile.bioPhoto = dataUrl;
+          updateApp(true, 'Bio photo added!');
+        });
+        e.target.value = '';
+      });
+
+      // Global Controls
+      document.getElementById('scroll-top-btn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      document.getElementById('sticky-share-btn').addEventListener('click', () => copyTextToClipboard(window.location.href, 'Page link copied'));
+      document.getElementById('open-editor-btn').addEventListener('click', () => openDrawer());
+      document.getElementById('close-editor-btn').addEventListener('click', closeDrawer);
+      document.getElementById('editor-backdrop').addEventListener('click', e => {
+        if (e.target === e.currentTarget) closeDrawer();
+      });
+      document.getElementById('info-modal-close').addEventListener('click', closeFooterModal);
+      document.getElementById('info-modal').addEventListener('click', e => {
+        if (e.target === e.currentTarget) closeFooterModal();
+      });
+
+      document.querySelectorAll('.editor-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeTab = btn.getAttribute('data-tab');
+          renderEditorDrawer();
+        });
+      });
+
+      // Initial render
+      renderBioPage();
+    })();
+  </script>
+</body>
+</html>
